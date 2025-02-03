@@ -1,149 +1,205 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OptiShade - A Jövő Mindennapjai</title>
-    <link rel="stylesheet" href="style.css">
-<style type="text/css" id="dcoder_stylesheet">body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
-    color: #333;
-    line-height: 1.6;
-}
+    <title>OptiShade-One</title>
+    
+    <!-- CSS -->
+    <style>
+        /* Alap stílusok */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #0d0d0d;
+            color: white;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
 
-/* Fejléc stílusai */
-header {
-    background: #4c4c82;
-    color: white;
-    text-align: center;
-    padding: 20px;
-}
+        /* Animált háttér */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, rgba(93,63,211,0.6), rgba(13,13,13,0.8));
+            animation: backgroundMove 10s infinite alternate;
+            z-index: -1;
+        }
 
-header img {
-    display: block;
-    margin: 0 auto;
-}
+        @keyframes backgroundMove {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
 
-/* Navigációs menü */
-nav {
-    background-color: #4c4c82;
-    text-align: center;
-    padding: 10px 0;
-}
+        /* Tartalom */
+        .logo {
+            width: 200px;
+            margin-top: 20px;
+        }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-weight: bold;
-}
+        h1 {
+            color: #5D3FD3;
+            font-size: 2.5rem;
+        }
 
-nav a:hover {
-    text-decoration: underline;
-}
+        .intro {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            display: inline-block;
+            width: 80%;
+            max-width: 600px;
+        }
 
-/* Funkciók szekció */
-#features {
-    padding: 20px;
-    text-align: center;
-}
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            background: #5D3FD3;
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 5px;
+        }
 
-/* Kapcsolat szekció */
-#contact {
-    padding: 20px;
-    text-align: center;
-    background-color: #f4f4f9;
-    margin-top: 20px;
-}
+        button:hover {
+            background: #4a2db6;
+        }
 
-#contact a {
-    color: #4c4c82;
-    text-decoration: none;
-    font-weight: bold;
-}
+        .hidden {
+            display: none;
+        }
 
-#contact a:hover {
-    text-decoration: underline;
-}
+        .more-info {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            display: none;
+        }
 
-/* Gomb stílusa */
-button {
-    background-color: #4c4c82;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 10px;
-}
+        /* Chatbot stílus */
+        .chat-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            background: #222;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+        }
 
-button:hover {
-    background-color: #3b3b6b;
-}
+        .chat-header {
+            background: #5D3FD3;
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+            font-size: 1.2rem;
+            color: white;
+        }
 
-/* Lábléc */
-footer {
-    background: #333;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
+        .chat-messages {
+            height: 200px;
+            overflow-y: auto;
+            padding: 10px;
+            color: white;
+        }
 
-/* Reszponzivitás */
-@media (max-width: 600px) {
-    header h1 {
-        font-size: 24px;
-    }
-
-    header p {
-        font-size: 14px;
-    }
-
-    nav a {
-        font-size: 14px;
-    }
-}</style></head>
+        .chat-input {
+            width: 90%;
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
 <body>
-    <!-- Fejléc logóval -->
+
     <header>
-        <img src="logo.png" alt="OptiShade logo" style="width:150px;">
-        <h1>OptiShade</h1>
-        <p>A jövő mindennapjai, egy lépéssel közelebb.</p>
+        <h1>OptiShade-One</h1>
+        <p>A jövő technológiája a látásodért.</p>
     </header>
 
-    <!-- Navigációs menü -->
-    <nav>
-        <a href="#features">Funkciók</a> |
-        <a href="#contact">Kapcsolat</a>
-    </nav>
-
-    <!-- Funkciók szekció -->
-    <section id="features">
-        <h2>Funkciók</h2>
-        <ul>
-            <li>AI alapú emlékeztetők</li>
-            <li>Fenntarthatósági tippek</li>
-            <li>Digitális asszisztens</li>
-        </ul>
-        <button onclick="alert('Üdvözlünk az OptiShade oldalon!')">További információ</button>
+    <section class="intro">
+        <h2>Fedezd fel a jövő szemüvegét</h2>
+        <p>Az OptiShade-One egy AI-alapú okosszemüveg, amely egyesíti a technológia és az emberi érzékelés erejét.</p>
+        <button id="infoButton">Tudj meg többet</button>
+        <p id="extraInfo" class="hidden">Az AI-technológia segít felismerni a környezeted, valós idejű adatokat biztosít és megvédi a viselőjét.</p>
     </section>
 
-    <!-- Kapcsolat szekció -->
-    <section id="contact">
-        <h2>Kapcsolat</h2>
-        <p>Kérdésed van? Lépj kapcsolatba velünk az alábbi e-mail címen:</p>
-        <p><a href="mailto:optishade@example.com">optishade@example.com</a></p>
+    <section class="more-info" id="moreInfo">
+        <h2>További információ</h2>
+        <p>Az OptiShade-One képes felismerni az arcokat, elemezni a környezetet és segíteni a mindennapi életben.</p>
     </section>
 
-    <!-- Lábléc -->
     <footer>
-        <p>© 2025 OptiShade. Minden jog fenntartva.</p>
+        <p>&copy; 2025 OptiShade-One | Minden jog fenntartva.</p>
     </footer>
 
-</body></html>
+    <!-- Chatbot -->
+    <div class="chat-container">
+        <div class="chat-header">AI Chatbot</div>
+        <div class="chat-messages" id="chatMessages"></div>
+        <input type="text" id="chatInput" class="chat-input" placeholder="Kérdezz valamit...">
+        <button id="sendChat">Küldés</button>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const infoButton = document.getElementById("infoButton");
+            const extraInfo = document.getElementById("extraInfo");
+            const moreInfo = document.getElementById("moreInfo");
+
+            infoButton.addEventListener("click", function() {
+                if (extraInfo.classList.contains("hidden")) {
+                    extraInfo.classList.remove("hidden");
+                    moreInfo.style.display = "block";
+                    infoButton.textContent = "Bezárás";
+                } else {
+                    extraInfo.classList.add("hidden");
+                    moreInfo.style.display = "none";
+                    infoButton.textContent = "Tudj meg többet";
+                }
+            });
+
+            // Chatbot
+            const chatInput = document.getElementById("chatInput");
+            const sendChat = document.getElementById("sendChat");
+            const chatMessages = document.getElementById("chatMessages");
+
+            sendChat.addEventListener("click", function() {
+                const userMessage = chatInput.value.trim();
+                if (userMessage) {
+                    const userMsgDiv = document.createElement("div");
+                    userMsgDiv.textContent = "Te: " + userMessage;
+                    chatMessages.appendChild(userMsgDiv);
+
+                    const botResponse = getBotResponse(userMessage);
+                    const botMsgDiv = document.createElement("div");
+                    botMsgDiv.textContent = "AI: " + botResponse;
+                    chatMessages.appendChild(botMsgDiv);
+
+                    chatInput.value = "";
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }
+            });
+
+            function getBotResponse(message) {
+                if (message.toLowerCase().includes("mi az optishade")) {
+                    return "Az OptiShade-One egy AI-alapú okosszemüveg.";
+                }
+                return "Sajnálom, nem értem. Próbálj meg mást kérdezni!";
+            }
+        });
+    </script>
+
+</body>
+</html>
